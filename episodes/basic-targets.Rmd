@@ -137,7 +137,8 @@ penguins_csv_file <- path_to_file("penguins_raw.csv")
 penguins_csv_file
 ```
 
-We will use the `tidyverse` set of packages for loading and manipulating the data. We don't have time to cover all the details about using `tidyverse` now, but if you want to learn more about it, please see the ["Manipulating, analyzing and exporting data with tidyverse" lesson](https://datacarpentry.org/R-ecology-lesson/03-dplyr.html).
+We will use the `tidyverse` set of packages for loading and manipulating the data. We don't have time to cover all the details about using `tidyverse` now, but if you want to learn more about it, please see the ["Manipulating, analyzing and exporting data with tidyverse" lesson](https://datacarpentry.org/R-ecology-lesson/03-dplyr.html), or the Carpentry incubator lesson [R and the tidyverse for working with datasets](https://carpentries-incubator.github.io/r-tidyverse-4-datasets/).
+
 
 Let's load the data with `read_csv()`.
 
@@ -185,7 +186,7 @@ penguins_data <- penguins_data_raw |>
     bill_depth_mm = `Culmen Depth (mm)`
   ) |>
   # Delete rows with missing data
-  remove_missing(na.rm = TRUE)
+  drop_na()
 
 penguins_data
 ```
@@ -218,8 +219,8 @@ clean_penguin_data <- function(penguins_data_raw) {
       species = Species,
       bill_length_mm = `Culmen Length (mm)`,
       bill_depth_mm = `Culmen Depth (mm)`
-    ) |>
-    remove_missing(na.rm = TRUE)
+     ) |>
+    drop_na()
 }
 
 list(
